@@ -6,6 +6,7 @@ class Graph:
     
     def addEdge(self, u, v): 
         self.graph[u].append(v)
+        self.graph[v].append(u)
     
     def printGraph(self): 
         for i in self.graph.keys():
@@ -24,18 +25,30 @@ class Graph:
                     queue.append(w)
 
 g = Graph()
-g.addEdge(1, 2)
-g.addEdge(1, 3)
-g.addEdge(2, 4)
-g.addEdge(2, 5)
-g.addEdge(3, 5)
-g.addEdge(4, 6)
-g.addEdge(5, 6)
-g.addEdge(6, 7)
+# g.addEdge(1, 2)
+# g.addEdge(1, 3)
+# g.addEdge(2, 4)
+# g.addEdge(2, 5)
+# g.addEdge(3, 5)
+# g.addEdge(4, 6)
+# g.addEdge(5, 6)
+# g.addEdge(6, 7)
+
+g.addEdge('A','F')
+g.addEdge('F','C')
+g.addEdge('C','B')
+g.addEdge('C','E')
+g.addEdge('B','H')
+g.addEdge('H','E')
+g.addEdge('E','D')
+g.addEdge('D','G')
+g.addEdge('G','I')
+g.addEdge('I','A')
+
 
 # g.printGraph()
 print("Breadth First Search: ")
-g.BFS(1)
+g.BFS('C')
 print()
 
 

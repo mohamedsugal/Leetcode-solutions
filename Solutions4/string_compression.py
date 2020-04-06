@@ -1,5 +1,17 @@
 from typing import List
 
+# Naive solution 
+def string_compression(text): 
+    count = 0
+    result = []
+    for i in range(len(text)): 
+        count += 1
+        if i + 1 >= len(text) or text[i] != text[i+1]: 
+            result.append(text[i])
+            if count > 1: 
+                result.append(str(count))
+            count = 0
+    return "".join(result)
 
 class Solution:
     @staticmethod
