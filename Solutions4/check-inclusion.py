@@ -21,6 +21,6 @@ class Solution:
 
 
 s1 = "ab"
-s2 = "eiidboaoo"
+s2 = "eidbaooo"
 s = Solution()
 print(s.checkInclusion(s1, s2))

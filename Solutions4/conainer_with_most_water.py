@@ -7,7 +7,7 @@ class Solution:
     def most_water(height: List[int]) -> int:
         max_area = float('-inf')
         for i in range(len(height)):
-            for j in range(i+1, len(height)):
+            for j in range(i + 1, len(height)):
                 min_val = min(height[i], height[j])
                 max_area = max(max_area, min_val * (j - i))
         return max_area
@@ -16,7 +16,7 @@ class Solution:
     @staticmethod
     def most_water2(height: List[int]) -> int:
         max_area = float('-inf')
-        left, right = 0, len(height)-1
+        left, right = 0, len(height) - 1
         while left < right:
             min_val = min(height[left], height[right])
             max_area = max(max_area, min_val * (right - left))
