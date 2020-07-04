@@ -1,2 +1,2 @@
 # Leetcode-solutions
-Solutions to leetcode problems and preparing for technical interviews
+Solutions to Leetcode problems solved using Python programming language to prepare for technical interviews. 
