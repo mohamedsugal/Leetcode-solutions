@@ -114,18 +114,8 @@ class LinkedList(object):
             curr_node = curr_node.next
         print()
 
-llist = LinkedList()
-llist.insertAtTail(4)
-llist.insertAtTail(9)
-llist.insertAtTail(7)
-llist.insertAtHead(11)
-llist.insertAfter(4,6)
-llist.insertBefore(11,2)
-llist.insertAtPoisition(12,8)
-llist.printList()
-llist.deleteNode(11)
-llist.deleteNodeAtPosition(3)
-llist.deleteNodeAtPosition(0)
-llist.printList()
-llist.reverseList()
-llist.printList()
+node = LinkedList()
+node.insertAtHead(8)
+node.insertAtHead(9)
+
+node.printList()

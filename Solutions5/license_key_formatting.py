@@ -7,7 +7,7 @@ class Solution:
             curr = S[i].upper()
             if curr == "-":
                 i -= 1
-            elif count != 0 and count % K == 0:
+            elif count == K:
                 result.insert(0, "-")
                 count = 0
             else:
