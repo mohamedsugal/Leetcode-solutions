@@ -4,6 +4,8 @@ from typing import List, Dict
 # Given a list of words and an M x N board of characters,
 # find all possible words in the list that can be formed
 # by a sequence of adjacent characters on the board.
+
+
 def find_adjacent(board: List[List[str]], i: int, j: int) -> List[str]:
     adjacent = []
     rows, columns = len(board), len(board[0])
@@ -26,18 +28,41 @@ def construct_graph(board: List[List[str]]) -> Dict[str, List[str]]:
     return graph
 
 
-# TODO: Do DFS or BFS to check if there exists a bath
-def word_exists(graph: Dict[str, List[str]], word: List[str]) -> bool:
+def check_word(graph: Dict[str, List[str]], word: str) -> bool:
+    if not word:
+        return False
     visited = set()
-    queue = []
-    if word not in graph.keys():
+    if word[0] not in graph.keys():
+        return False
+    queue = [word[0]]
+    visited.add(word[0])
+    i = 0
+    while queue:
+        curr_char = queue.pop()
+        if word[len(word) - 1] == curr_char:
+            return True
+        i += 1
+        next_char = word[i]
+        if next_char in graph[curr_char]:
+            queue.append(next_char)
+            visited.add(next_char)
+    return False
 
 
-words = ["GUEST", "FOR", "ARE", "QUIT"]
-board = [['G', 'I', 'Z'],
-         ['A', 'U', 'T'],
-         ['Q', 'S', 'E']]
+def word_exists(board: List[List[str]], words: List[str]) -> List[str]:
+    result = []
+    graph = construct_graph(board)
+    for word in words:
+        if check_word(graph, word):
+            result.append(word)
+    return result
+
+
+test_words = ["GUEST", "FOR", "ARE", "QUIT"]
+test_words2 = []
+test_words3 = ["QUIZ", "ZEBRA", "GUT", ""]
+test_board = [['G', 'I', 'Z'],
+              ['A', 'U', 'T'],
+              ['Q', 'S', 'E']]
 # Output: "GUEST", "QUIT"
-
-print(find_adjacent(board, 1, 1))
-# print(construct_graph(board))
+print(word_exists(test_board, test_words2))
