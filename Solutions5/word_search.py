@@ -34,9 +34,8 @@ def check_word(graph: Dict[str, List[str]], word: str) -> bool:
     visited = set()
     if word[0] not in graph.keys():
         return False
-    queue = [word[0]]
+    queue, i = [word[0]], 0
     visited.add(word[0])
-    i = 0
     while queue:
         curr_char = queue.pop()
         if word[len(word) - 1] == curr_char:
