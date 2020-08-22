@@ -11,15 +11,15 @@ class Solution:
             return []
         queue, res = deque([root]), []
         while queue:
-            level, size = [], len(queue)
+            levels, size = [], len(queue)
             for i in range(size):
                 node = queue.popleft()
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-                level.append(node.val)
-            res.append(level)
+                levels.append(node.val)
+            res.append(levels)
         return res
 
 
