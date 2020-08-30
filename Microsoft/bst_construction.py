@@ -69,11 +69,11 @@ def level_order_traversal(root: TreeNode) -> list:
     return res
 
 
-# nodes = [8, 3, 10, 1, 6, 4, 7, 14, 13]
-# r = insert(nodes)
+nodes = [7, 5, 11, 1, 6, 9, 15]
+r = insert(nodes)
 #
 # in_order_traversal(r)
 # print()
-# post_order_traversal(r)
-# print()
+post_order_traversal(r)
+print()
 # print(level_order_traversal(r))
