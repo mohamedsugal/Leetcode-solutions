@@ -22,4 +22,4 @@ class Solution:
 
 
 test = Solution()
-print(test.atoi("testing+42  word"))
+print(test.atoi(""))

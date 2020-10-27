@@ -1,17 +1,19 @@
 from typing import List
+from collections import deque
 
 
 class Solution:
     @staticmethod
     def letter_combinations(digits: str) -> List[str]:
-        combinations = {'2': ['a', 'b', 'c'],
-                        '3': ['d', 'e', 'f'],
-                        '4': ['g', 'h', 'i']}
-        for i in range(len(combinations[digits[0]])):
-            for j in range(len(digits)):
-                print(i, j)
+        mapping = ['0', '1', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+        combinations = deque([''])
+        for d in digits:
+            for _ in range(len(combinations)):
+                prev = combinations.popleft()
+                for letter in mapping[int(d)]:
+                    combinations.append(prev + letter)
+        return [*combinations] if digits else ''
 
 
-digit = "23"
 s = Solution()
-s.letter_combinations(digit)
+print(s.letter_combinations('345'))
