@@ -5,6 +5,7 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         window = defaultdict()
         left = right = length = 0
+
         while right < len(s):
             if s[right] in window:
                 del window[s[left]]
