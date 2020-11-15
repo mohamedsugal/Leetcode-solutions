@@ -28,7 +28,8 @@ def print_list(head: ListNode) -> None:
 
 
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+    @staticmethod
+    def add_two_numbers(l1: ListNode, l2: ListNode) -> ListNode:
         dummy_head = ListNode(-1)
         carry = 0
         curr = dummy_head
@@ -58,5 +59,5 @@ print_list(l2)
 print()
 
 solution = Solution()
-res = solution.addTwoNumbers(l1, l2)
+res = solution.add_two_numbers(l1, l2)
 print_list(res)

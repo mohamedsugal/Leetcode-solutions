@@ -2,7 +2,8 @@ from collections import defaultdict
 
 
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    @staticmethod
+    def longest_substring(s: str) -> int:
         window = defaultdict()
         left = right = length = 0
 
@@ -18,11 +19,9 @@ class Solution:
         return length
 
 
-def test_solution():
-    solution = Solution()
-    assert solution.lengthOfLongestSubstring("abcabcbb") == 3
-    assert solution.lengthOfLongestSubstring("bbbbb") == 1
-    assert solution.lengthOfLongestSubstring("pwwkew") == 3
-
-
-test_solution()
+ret1 = Solution.longest_substring("abcabcbb")
+ret2 = Solution.longest_substring("bbbbb")
+ret3 = Solution.longest_substring("pwwkew")
+print(ret1)
+print(ret2)
+print(ret3)
