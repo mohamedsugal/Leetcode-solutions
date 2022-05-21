@@ -41,20 +41,19 @@ def in_order_traversal(root: TreeNode) -> None:
 
 def post_order_traversal(root: TreeNode) -> None:
     stack = []
-    while root or stack:
-        if root:
+    while len(stack) > 0 or root is not None:
+        while root is not None:
             stack.append(root)
             root = root.left
-        else:
-            temp = stack[-1].right
-            if temp is None:
+        temp = stack[-1].right
+        if temp is None:
+            temp = stack.pop()
+            print(temp.val, end=" ")
+            while len(stack) > 0 and temp == stack[-1].right:
                 temp = stack.pop()
                 print(temp.val, end=" ")
-                while stack and temp == stack[-1].right:
-                    temp = stack.pop()
-                    print(temp.val, end=" ")
-            else:
-                root = temp
+        else:
+            root = temp
 
 
 def level_order_traversal(root: TreeNode) -> list:

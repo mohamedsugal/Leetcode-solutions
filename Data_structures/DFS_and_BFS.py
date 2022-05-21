@@ -1,62 +1,58 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 
-class Graph: 
-    def __init__(self): 
+
+class Graph:
+    def __init__(self):
         self.graph = defaultdict(list)
 
-    def addEdge(self, u, v): 
+    def addEdge(self, u, v):
         self.graph[u].append(v)
-        self.graph[v].append(u)
-    
-    def printGraph(self): 
-        for i in self.graph.keys():
-            print(i, '->', ' -> '.join([str(j) for j in self.graph[i]]))
 
-    def BFS(self, start): 
-        explored = set()
-        queue = [start]
-        explored.add(start)
-        while queue: 
-            v = queue.pop(0)
-            print(v, end=" ")
-            for w in self.graph[v]: 
-                if w not in explored: 
-                    explored.add(w)
-                    queue.append(w)
-            
-    def DFS(self, start): 
-        explored = set()
+    def printGraph(self):
+        for node in self.graph:
+            print(f'{node} -> {self.graph[node]}')
+
+    def BFS(self, start):
+        visited = set()
+        queue = deque([start])
+        visited.add(start)
+        while queue:
+            node = queue.popleft()
+            print(node, end=" ")
+            for neighbor in self.graph[node]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+
+    def DFS(self, start):
+        visited = set()
         stack = [start]
-        while stack: 
-            v = stack.pop()
-            if v in explored: 
+        while stack:
+            node = stack.pop()
+            if node in visited:
                 continue
-            explored.add(v)
-            print(v, end=" ")
-            for w in self.graph[v]:
-                if w not in explored: 
-                    stack.append(w)
+            visited.add(node)
+            print(node, end=" ")
+            for neighbor in self.graph[node]:
+                if neighbor not in visited:
+                    stack.append(neighbor)
+
 
 graph = Graph()
 graph.addEdge(1, 2)
-graph.addEdge(1, 4)
-graph.addEdge(4, 3)
-graph.addEdge(3, 9)
-graph.addEdge(3, 10)
-graph.addEdge(2, 3)
+graph.addEdge(1, 3)
+graph.addEdge(3, 5)
+graph.addEdge(2, 4)
 graph.addEdge(2, 5)
-graph.addEdge(2, 7)
-graph.addEdge(2, 8)
-graph.addEdge(5, 8)
 graph.addEdge(5, 6)
-graph.addEdge(5, 7)
-graph.addEdge(7, 8)
+graph.addEdge(6, 7)
+
 
 # graph.printGraph()
 
 print("Breadth First Search: ")
-graph.BFS(5)
+graph.BFS(1)
 print("\n")
 print("Depth First Search: ")
-graph.DFS(5)
+graph.DFS(1)
 print()
