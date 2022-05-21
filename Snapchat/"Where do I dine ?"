@@ -1,0 +1,161 @@
+"Where do I dine ?"
+
+Your solution will be scored against some number of hidden test cases. A sample is provided below.
+
+
+Instructions:
+
+You have been given a timestamp and an API endpoint that returns a list of food trucks. The goal is to write a set of functions that provide a list of food trucks' applicants and locationids fetched from the given API endpoint using the given timestamp.
+
+
+
+In this program, you’ll need to:
+
+Include an HTTP authorization header, in the format of "Authorization: Basic xxxxx" (please get the header value from the input box)
+Convert the UNIX timestamp given to extract the day of the week, hour, minutes (UTC format).
+Use the time extracted above as parameters to fetch the data of the food trucks that open at the given time and day from the given API. 
+Your request should have the following parameters: hour, minutes, dayOrder
+List the names of food trucks that get from the API.
+If no matches are found print "N/A" (without quote)
+If endpoint hits an error, print "N/A" (without quote)
+
+
+Input:
+
+You will be provided with an array of strings with three values:
+
+The first element is the URL for fetching food truck data.
+The second element is the UNIX timestamp to be used to extract day and time (UTC format).
+The third element is the API token needed in the authorization header when fetching food truck data.
+See sample input for an example.
+DayOrder represents the day of the week in integer (0 represents Sunday).
+﻿
+
+Here's what the data from this GET request will look like:
+
+[{
+      "DayOrder":2,
+      "DayOfWeekStr":"Tuesday",
+      "starttime":"10AM",
+      "endtime":"6PM",
+      "permit":"19MFF-00105",
+      "PermitLocation":"773 MARKET ST",
+      "locationdesc":"Pushcart located on Market St. 7 linear feet West of the Fire Hydrant. Must maintain 8 linear feet clearance from Street Artist Booth M22. Reference Street Artist Map #14 (http:\/\/www.sfartscommission.org\/street_artists_program\/maps\/index.html)",
+      "optionaltext":"Kettle Corn, Funnel Cakes, Lemonade, Beverages, Flan, Hot Dogs, Falafel, Hot and Cold Sandwiches, French Fries, Baklava and Pastries",
+      "locationid":1341056,
+      "scheduleid":null,
+      "start24":"10:00",
+      "end24":"18:00",
+      "CNN":8746103,
+      "Addr_Date_Create":"11\/15\/2011 01:48:04 PM",
+      "Addr_Date_Modified":"11\/15\/2011 01:50:08 PM",
+      "block":"3706",
+      "lot":"096",
+      "ColdTruck":"N",
+      "Applicant":"Kettle Corn Star",
+      "X":"6,011,164.82111",
+      "Y":"2,114,324.40143",
+      "Latitude":37.7861609344,
+      "Longitude":-122.4051273113,
+      "Location":"(37.7861609344287, -122.405127311306)"
+   }, ...]
+
+
+Output:
+
+Output must match the provided "Sample Output" format with no quotes, additional leading spaces, or trailing spaces.
+
+Your output should be a list of food truck Applicants that are open at the time and date provided in form of the UNIX timestamp in alphabetical order.
+Each food truck should be in the format of "Applicant, locationid"(Applicant and locationid, with a ", "in the middle)
+For example, if it's Friday, May 5 at 12 pm, then I should only see food trucks that are open then.
+If no matches are found return N/A
+
+
+Note about the write-up: 
+
+You'll be asked for a written explanation of your solution. 
+Please use this opportunity to showcase your technical expertise describing how you would take this proof-of-concept command-line application and convert it to a fully-featured web application using the data provided by an API capable of serving millions of concurrent users. 
+Imagine this write-up will be used to pitch your architecture to the team so make sure to explain why you would make those choices. 
+Please write 300-400 words explaining the above points.
+
+
+Tips:
+
+The timestamp is in UNIX format, make sure you are converting it correctly (UTC format).
+To test proper timestamp use the following: 1578830400.0 will convert to 12 January 2020 12pm.
+You should test different variations of the input data and verify the output. Your final score is calculated against a list of different inputs and expected outputs.
+Depending on the language you are using, you may be able to install additional libraries, however, you shouldn't need anything extra to complete this challenge.
+Just like a real web service, do not assume that the request will always succeed!
+["https://api.filtered.ai/q/foodtruck", "1602172800", "ZmlsdGVyZWQ6YWRtaW4"]
+Sample Input
+Alfaro Truck, 1353436
+Athena SF Gyro, 773095
+Bay Area Dots, LLC, 1344202
+Bay Area Dots, LLC, 1344203
+Bay Area Mobile Catering, Inc. dba. Taqueria Angelica's, 1331880
+Bay Area Mobile Catering, Inc. dba. Taqueria Angelica's, 1331885
+Bonito Poke, 1337540
+CARDONA'S FOOD TRUCK, 1336192
+CC Acquisition LLC, 1174517
+Casey's Pizza, LLC, 934553
+Chairman SF, LLC, 1337271
+Cochinita, 1377263
+Cochinita, 1389608
+El Gallo Jiro, 1337914
+El Tonayanse #4 / #36, 1090081
+El Tonayense #60, 1089698
+Eli's Hot Dogs, 948140
+Expresso Subito, LLC., 1344172
+Expresso Subito, LLC., 1344178
+FRUITYMANIA, 1357612
+FRUITYMANIA, 1357615
+Faith Sandwich, 1171819
+Fruteria Serrano, 755221
+Giant Burrito, 1337786
+Golden Gate Halal Food, 1366268
+Got Snacks, 1343831
+Halal Cart, LLC, 1341234
+Isidoro Serrano, 1351263
+Julie's Hot Dogs, 1039786
+Kabob Trolley, LLC, 959619
+Kettle Corn Star, 1336921
+Kettle Corn Star, 1341056
+La Jefa, 1337347
+May Catering, 934616
+Off the Grid Services, LLC, 1338990
+Quick Grub, 1242091
+Reecees Soulicious, 848185
+Roadside Rotisserie Corporation / Country Grill, 1337050
+San Francisco Carts & Concessions, Inc. DBA Stanley's Steamers Hot Dogs, 1265569
+San Francisco Carts & Concessions, Inc. DBA Stanley's Steamers Hot Dogs, 1337290
+San Francisco Carts & Concessions, Inc. DBA Stanley's Steamers Hot Dogs, 1337291
+San Francisco Carts & Concessions, Inc. DBA Stanley's Steamers Hot Dogs, 1337292
+San Francisco Carts & Concessions, Inc. DBA Stanley's Steamers Hot Dogs, 1337293
+San Francisco Street Foods, Inc., 1331548
+San Francisco Street Foods, Inc., 1331549
+San Francisco Street Foods, Inc., 1331554
+San Francisco Street Foods, Inc., 1331555
+San Francisco Street Foods, Inc., 1331556
+San Pancho's Tacos, 1337835
+Santana ESG, Inc., 949952
+Santana ESG, Inc., 953198
+Scotch Bonnet, 934519
+Singh Brothers Ice Cream, 963994
+Singh Brothers Ice Cream, 963995
+Singh Brothers Ice Cream, 963996
+Singh Brothers Ice Cream, 963997
+Subs on Hubs, 1184864
+Tacos El Flaco, 1337357
+Tacos El Primo, 1090090
+Tacos Rodriguez, 1337354
+Tacos Rodriguez, 1337356
+Tacos Santana, 453012
+Tacos Santana, 453013
+The Chai Cart, 364218
+The New York Frankfurter Co. of CA, Inc. DBA: Annie's Hot Dogs, 1337607
+The New York Frankfurter Co. of CA, Inc. DBA: Annie's Hot Dogs, 1337614
+The New York Frankfurter Co. of CA, Inc. DBA: Annie's Hot Dogs, 1337620
+Treats by the Bay LLC, 1337904
+Treats by the Bay LLC, 1382718
+Yummy Hot Dogs, 934302
+Zuri Food Facilities, 1463451
